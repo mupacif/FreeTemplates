@@ -23,5 +23,8 @@ fos_user_change_password:
     prefix: /profile
     
     
+coresphere_console:
+    resource: .
+    type: extra
 
 
