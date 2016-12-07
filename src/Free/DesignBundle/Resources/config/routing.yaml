@@ -1,12 +1,29 @@
     
 free_design_page:
     path:     /
-    defaults: {_controller:FreeDesignBundle:Default:index }
+    defaults: {_controller: FreeDesignBundle:Default:index }
+
 
 free_design_add_category:
     path:     /addCategory
-    defaults: {_controller:FreeDesignBundle:Default:addCategory }
+    defaults: {_controller: FreeDesignBundle:Default:addCategory }
     
 free_design_add_template:  
     path:     /addTemplate
-    defaults: {_controller:FreeDesignBundle:Default:addTemplate }    
+    defaults: {_controller: FreeDesignBundle:Default:addTemplate }    
+
+free_design_preview:  
+    path:     /template/preview/{name}
+    defaults: {_controller: FreeDesignBundle:Default:preview }    
+
+free_design_template:  
+    path:     /template/{name}
+    defaults: {_controller: FreeDesignBundle:Default:showTemplate }    
+
+
+
+
+
+free_design_template_download:  
+    path:     /template/download/{name}
+    defaults: {_controller: FreeDesignBundle:Default:downloadTemplate }    

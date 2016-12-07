@@ -1,9 +1,10 @@
 <?php
 
 namespace Free\DesignBundle\Entity;
-use Doctrine\Common\Collections\ArrayCollection;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * Template
@@ -22,12 +23,7 @@ class Template
      */
     private $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="uri", type="string", length=255, unique=true)
-     */
-    private $uri;
+
 
     /**
      * @var string
@@ -42,10 +38,25 @@ class Template
      * @ORM\Column(name="info", type="text", nullable=true)
      */
     private $info;
-/**
+    /**
      * @ORM\ManyToMany(targetEntity="Free\DesignBundle\Entity\Category", cascade={"persist"})
      */
     private $categories;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tumbnail", type="string", length=255, unique=true)
+     */
+    private $tumbnail;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="files", type="string", length=255, unique=true)
+     */
+    private $files;
+
 
     public function __construct() {
         $this->date = new \Datetime();
@@ -151,5 +162,53 @@ class Template
     {
         return $this->info;
     }
-}
 
+    /**
+     * Set tumbnail
+     *
+     * @param string $tumbnail
+     *
+     * @return Template
+     */
+    public function setTumbnail($tumbnail)
+    {
+        $this->tumbnail = $tumbnail;
+
+        return $this;
+    }
+
+    /**
+     * Get tumbnail
+     *
+     * @return string
+     */
+    public function getTumbnail()
+    {
+        return $this->tumbnail;
+        
+    }
+
+    /**
+     * Set files
+     *
+     * @param string $files
+     *
+     * @return Template
+     */
+    public function setFiles($files)
+    {
+        $this->files = $files;
+
+        return $this;
+    }
+
+    /**
+     * Get files
+     *
+     * @return string
+     */
+    public function getFiles()
+    {
+        return $this->files;
+    }
+}

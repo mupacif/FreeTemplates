@@ -1,7 +1,3 @@
-free_user:
-    resource: "@FreeUserBundle/Controller/"
-    type:     annotation
-    prefix:   /
 
 free_design:
     resource: "@FreeDesignBundle/Resources/config/routing.yaml"

@@ -2,3 +2,7 @@ services:
 #    free_design.example:
 #        class: Free\DesignBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+    app.templates_uploader:
+        class: Free\DesignBundle\FileUploader
+        arguments: ['%templates_directory%']
