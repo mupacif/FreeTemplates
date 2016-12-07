@@ -1,0 +1,20 @@
+{
+"frames": {
+	"handcatch_000.png": {
+		"frame": {"x":132, "y":0, "w":130, "h":136},
+		"spriteSourceSize": {"x":7,"y":0,"w":150,"h":150},
+		"sourceSize": {"w":150,"h":150}
+	},
+	"handcatch_001.png": {
+		"frame": {"x":0, "y":0, "w":131, "h":136},
+		"spriteSourceSize": {"x":6,"y":0,"w":150,"h":150},
+		"sourceSize": {"w":150,"h":150}
+	}
+
+},
+"meta": {
+	"image": "data/handcatchSprite.png",
+	"size": {"w": 263, "h": 137},
+	"scale": "1"
+}
+}

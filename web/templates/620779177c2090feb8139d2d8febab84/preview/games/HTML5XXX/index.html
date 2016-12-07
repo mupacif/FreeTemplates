@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="Class.js"></script>
+        <!-- utils -->
+        <script src="utils.js"></script>
+        <!-- animation classes -->
+        <script src="SheetsManager.js"></script>
+        <!-- sound classes-->
+        <script src="Box2D.js"></script>
+               <!-- animation classes -->
+        <script src="SheetsManager.js"></script>
+        <style>
+            canvas {
+                -moz-transform: scaleY(-1);    /* Gecko */
+                -o-transform: scaleY(-1);      /* Opera */
+                -webkit-transform: scaleY(-1); /* Webkit */
+                transform: scaleY(-1);         /* Standard */
+                filter: FlipH;                 /* IE 6/7/8 */
+            }
+        </style>
+    </head>
+    <body>
+
+        <div>
+        <img src="data/header.png" alt="" width="680"/></div>
+    
+            <div>       
+                <canvas id="myCanvas" width="680" height="600"></canvas></div>
+        loves : <span id="loves">0</span>   love lost : <span id="lost">0</span>
+        <div>
+          <img src="data/footer.jpg" alt="" width="680"/></div>
+        <script type="text/javascript">
+            
+            var loves = document.getElementById('loves');
+            var canvasD = document.getElementById('myCanvas');
+            var context = canvasD.getContext('2d');
+            var ctx = canvasD.getContext('2d');
+            
+            var canvas = canvasD;//
+            //projection
+            //
+            //translation sur X
+            var scale = 10.0;
+
+            //81115 
+            // These are global shorthands we declare for Box2D primitives
+            // we'll be using very frequently.
+            Vec2 = Box2D.Common.Math.b2Vec2;
+            BodyDef = Box2D.Dynamics.b2BodyDef;
+            Body = Box2D.Dynamics.b2Body;
+            FixtureDef = Box2D.Dynamics.b2FixtureDef;
+            Fixture = Box2D.Dynamics.b2Fixture;
+            World = Box2D.Dynamics.b2World;
+            MassData = Box2D.Collision.Shapes.b2MassData;
+            PolygonShape = Box2D.Collision.Shapes.b2PolygonShape;
+            CircleShape = Box2D.Collision.Shapes.b2CircleShape;
+            DebugDraw = Box2D.Dynamics.b2DebugDraw;
+            RevoluteJointDef = Box2D.Dynamics.Joints.b2RevoluteJointDef;
+            b2AABB = Box2D.Collision.b2AABB;
+            b2Math = Box2D.Common.Math.b2Math;
+            // var PHYSICS_UPDATE_PER_SEC = 60;
+            var PHYSICS_LOOP_HZ = 1.0 / 60.0;
+var animations = []
+            var entities = new Array();
+            var bodies = new Array();
+
+            var stars = new Array();
+            
+            var myRectangle = {
+                x: 20.0,
+                y: 10,
+                width: 10,
+                height: 10,
+                borderWidth: 2,
+                physBody: null,
+                hit:function()
+                {
+                    console.log("shit");
+                },
+                  userData:
+                            {
+                                "id":"Rect",
+                                "ent": this
+                                
+                            }
+            };
+
+            var myRectangle2 = {
+                x: 50.0,
+                y: 60,
+                width: 10,
+                height: 10,
+                borderWidth: 2,
+                physBody: null
+            };
+
+
+
+
+            var groundD = {
+                x: canvas.width / 2 / scale,
+                y: 0.0,
+                width: canvas.width / scale,
+                height: 10,
+                borderWidth: 2,
+                physBody: null
+            };
+            var groundD2 = {
+                x: canvas.width / 2 / scale,
+                y: canvas.height / scale,
+                width: canvas.width / scale,
+                height: 10,
+                borderWidth: 2,
+                physBody: null
+            };
+
+            var groundD3 = {
+                x: 0,
+                y: canvas.height / 2 / scale,
+                width: 10,
+                height: canvas.height / scale,
+                borderWidth: 2,
+                physBody: null
+            };
+            var groundD4 = {
+                x: canvas.width / scale,
+                y: canvas.height / 2 / scale,
+                width: 10,
+                height: canvas.height / scale,
+                borderWidth: 2,
+                physBody: null
+                
+            };
+            entities.push(groundD);
+            entities.push(groundD2);
+            entities.push(groundD3);
+            entities.push(groundD4);
+
+
+          //  entities.push(myRectangle);
+            //entities.push(myRectangle2);
+
+
+            //CREATION of world (100x100)||idéal 10-10)
+            world = new World(new Vec2(0, 0.0), false);
+            function addGround(groundD)
+            {
+
+                //create ground
+                var groundDef = new BodyDef();
+                // groundDef.position.Set(0.0,0.0);
+                groundDef.position.x = groundD.x;
+                groundDef.position.y = groundD.y;
+
+                var groundBox = new PolygonShape();
+                groundBox.SetAsBox(groundD.width / 2, groundD.height / 2);
+                var dsf = new FixtureDef();
+                dsf.filter.groupIndex = 1;
+                dsf.shape = groundBox;
+                var ground = world.CreateBody(groundDef);
+                ground.CreateFixture(dsf, 0.0);
+                return ground;
+            }
+
+
+            function addBody(myRectangle)
+            {
+                //creation of body
+                var bodyDef = new BodyDef();
+                bodyDef.type = Body.b2_dynamicBody;
+                bodyDef.position.Set(myRectangle.x, myRectangle.y);
+
+                var fixtureDefinition = new FixtureDef();
+
+                /* fixtureDefinition.filter.categoryBits = 0x0002;
+                 fixtureDefinition.filter.maskBits = 0x0001;*/
+                fixtureDefinition.filter.groupIndex = -1;
+
+                fixtureDefinition.density = 0;
+                //coefficien de glissement sur les autres
+                fixtureDefinition.friction = 0;
+                //elasticité en cas de rebons
+                fixtureDefinition.restitution = 0;
+
+
+                /// creation of the object
+
+                fixtureDefinition.shape = new PolygonShape();
+                fixtureDefinition.shape.SetAsBox(myRectangle.width / 2, myRectangle.height / 2);
+                if(myRectangle.userData) bodyDef.userData = myRectangle.userData;
+                var body = world.CreateBody(bodyDef);
+                body.CreateFixture(fixtureDefinition);
+
+                return body;
+            }
+            var ids = 0;
+            function addFallingStars(myRectangle, x)
+            {
+                //creation of body
+                var bodyDef = new BodyDef();
+                
+                 var pos;
+                bodyDef.type = Body.b2_dynamicBody;
+                if(!x)
+                    x=50;
+                
+                bodyDef.position.Set(x, 80);
+
+                var fixtureDefinition = new FixtureDef();
+
+                /* fixtureDefinition.filter.categoryBits = 0x0002;
+                 fixtureDefinition.filter.maskBits = 0x0001;*/
+                //fixtureDefinition.filter.groupIndex = -1;
+
+                fixtureDefinition.density = 0;
+                //coefficien de glissement sur les autres
+                fixtureDefinition.friction = 0;
+                //elasticité en cas de rebons
+                fixtureDefinition.restitution = 0;
+
+
+                /// creation of the object
+
+                fixtureDefinition.shape = new PolygonShape();
+                fixtureDefinition.shape.SetAsBox(myRectangle.width / 2, myRectangle.height / 2);
+                
+                 var anim = heart(0,0);
+                if(myRectangle.userData) bodyDef.userData =   {
+                                "id": -1,"array":ids++,"anim":anim
+                                
+                            };
+                var body = world.CreateBody(bodyDef);
+                  pos =body.GetPosition();
+                 
+                body.CreateFixture(fixtureDefinition);
+
+                body.SetLinearVelocity(new Vec2(0, -15));
+             
+                stars.push({"phys":body, "anim":anim});
+            }
+
+
+           groundD.physBody = addGround(groundD);
+           // groundD2.physBody = addGround(groundD2);
+            groundD3.physBody = addGround(groundD3);
+            groundD3.physBody = addGround(groundD4);
+            myRectangle.physBody = addBody(myRectangle);
+//            myRectangle2.physBody = addBody(myRectangle2);
+            
+            addFallingStars(myRectangle);
+
+            // console.log(body.GetPosition().x);
+            //body.SetLinearVelocity(new Vec2(1,1));
+            var test = new Vec2(1, 2);
+            var deads = [];
+            var t = 0;
+            var current = 0;
+            var level = 0;
+            loadSheet("heart");
+            loadSheet("hand");
+            loadSheet("handcatch");
+             loadSheet("heartOff");
+           var gogo = hand(50,100) 
+             var pos;
+             var losts = 0;
+            var refresh = function (t)
+            {
+                 context.clearRect(0, 0,1000, 1000);
+                level+=0.01;
+                if(t-current>Math.random()*(250-level)+(50-level)){
+                    
+               current = t;
+                addFallingStars(myRectangle, Math.random()*60+10)
+                }
+                
+                world.Step(
+                        PHYSICS_LOOP_HZ, //frame rate
+                        1, // velocity iteration
+                        1               // position iteration
+                        );
+                //  console.log(body.GetPosition().x+':'+body.GetPosition().y);
+                /*  
+                 myRectangle.x = body.GetPosition().x ;
+                 myRectangle.y = body.GetPosition().y ;
+                 */
+                
+                      for(var i=0;i<stars.length;i++)
+        {
+           var hehe = stars[i];
+     hehe.phys.SetLinearVelocity(new Vec2(0, -15-level));
+                    var pos = hehe.phys.GetPosition();
+                    if(hehe.anim)
+                    {
+                        if(hehe.anim.finished)
+                        {
+                            stars.splice(i,1);
+                        }
+                     hehe.anim.posX = pos.x*scale-50;
+                     hehe.anim.posY = pos.y*scale-50;
+                     }else
+                     {
+                         hehe.anim = heart(pos.x*scale-50,pos.y*scale-50);
+                     }
+                if(pos.y<11)
+                {losts++;
+                    document.getElementById("lost").innerHTML = losts;
+                    if(hehe.anim)
+                        hehe.anim.finished = true;
+                    
+                    heartOff(pos.x*scale-50,pos.y*scale-50)
+                    stars.splice(0, 1);
+                    world.DestroyBody(hehe.phys)
+                    addFallingStars(myRectangle, Math.random()*60+10)
+               }
+       
+        }
+               
+                
+                 var body = null;
+        for(var i=0;i<deads.length;i++)
+        {
+           
+             body = deads[i];
+             if(body.GetUserData().anim)
+             body.GetUserData().anim.finished = true;
+         
+            world.DestroyBody(deads[i]);
+
+           
+           deads.splice(0,1);
+          //   addFallingStars(myRectangle, Math.random()*60+10)
+       
+        }
+               
+               // console.log(b2Math.Distance(myRectangle2.physBody.GetPosition(), myRectangle.physBody.GetPosition()));
+              //  world.DrawDebugData();
+                world.ClearForces();
+  // console.log(myRectangle.physBody.GetPosition().x)
+  pos = myRectangle.physBody.GetPosition();
+   if(!gogo)
+   {
+       
+       gogo = hand(pos.x,pos.y); 
+   }
+   else
+   {
+   gogo.posX = pos.x*scale-50;
+   gogo.posY = pos.y*scale-50;
+   }
+          for (i = 0; i < animations.length; i++)
+                {
+                    var d = animations[i];
+                    d.update(d.posX, d.posY)
+                    if (d.finished)
+                    {
+                 //       console.log("finished")
+                        animations.splice(i, 1)
+                    }
+                }
+                
+             //   console.log("stars" + stars.length + " " + animations.length+" " + deads.length)
+             
+         
+         
+    };
+
+/**
+ * 
+ */
+
+var addContactListener= function(callbacks){
+  var listener = new Box2D.Dynamics.b2ContactListener();
+           
+        if(callbacks.PostSolve) listener.PostSolve = function (contact, impulse) {
+            callbacks.PostSolve(contact.GetFixtureA().GetBody().GetUserData(),
+                                contact.GetFixtureB().GetBody(),
+                                impulse.normalImpulses[0])};
+                                
+                                 if (callbacks.BeginContact) listener.BeginContact = function(contact) {
+        callbacks.BeginContact(contact.GetFixtureA().GetBody().GetUserData(),
+                               contact.GetFixtureA().GetBody());
+                               
+                               
+                              
+        };
+
+        world.SetContactListener(listener);
+       
+        
+        };
+var points = 0;
+addContactListener({
+        BeginContact: function(idA, idB) {
+            if(idA)
+                if(idA.id)
+            {
+                
+                if(idA.id==-1)
+                {
+                deads.push(idB);
+                points++;
+                loves.innerHTML=points
+            }
+                else
+                {
+                if(idA.id=="Rect")
+                {
+                    var pos = idB.GetPosition();
+                    handcatch(pos.x*scale-50,pos.y*scale-50);
+                
+                }
+                 }
+          
+//           console.log("body destroyed")
+            }
+        },
+        
+        PostSolve: function(idA, idB, impulse) {
+     
+     
+                    if(idA)
+              if(idA.hit)
+         console.log("yatta")
+      }});
+  function removeBody()
+  {
+      
+      
+      world.DestroyBody(stars[0])
+              
+                    stars.splice(0, 1);
+                    
+                    addFallingStars(myRectangle, Math.random()*60+10)
+  }
+
+        </script>
+
+        <script>
+            window.requestAnimFrame = (function (callback) {
+                return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+                        function (callback) {
+                            window.setTimeout(callback, 1000 / 60);
+                        };
+            })();
+
+
+
+
+            function animate(entities, canvas, context) {
+                 
+                // update
+                // clear
+
+                // draw
+                refresh(t++);
+
+                
+
+
+                // request new frame
+                requestAnimFrame(function () {
+                    animate(entities, canvas, context);
+                });
+
+            }
+
+
+ 
+            window.addEventListener("keydown", MX, true);
+            var speed = 10;
+            var xx = 0;
+            var yy = 0;
+            function MX(evt)
+            {
+                if (evt.keyCode == 37)
+                {//left
+                    console.log("left");
+                    xx = -3-level;
+                }
+                if (evt.keyCode == 39)
+                {//right
+                    console.log("right");
+                    xx = 3+level;
+                }
+
+
+
+                myRectangle.physBody.SetLinearVelocity(new Vec2(xx * speed,
+                        yy * speed));
+                        
+
+            }
+            
+            canvas.addEventListener("mousemove", MS, true);
+             function MS(event)
+            {
+ 
+         
+        console.log("mouse:"+event.clientX);
+ 
+
+                var xdif = myRectangle.physBody.GetPosition().x*10;
+                console.log("diff:"+(event.clientX-xdif))
+             myRectangle.physBody.SetLinearVelocity(new Vec2(event.clientX-xdif,0));
+                        
+
+            }
+            
+           animate(entities, canvasD, context);
+
+            // drawRect(myRectangle, context);
+
+
+            var debugDraw = new DebugDraw();
+            debugDraw.SetSprite(document.getElementById("myCanvas").getContext("2d"));
+            debugDraw.SetDrawScale(scale);
+            debugDraw.SetFillAlpha(0.3);
+            debugDraw.SetLineThickness(1.0);
+            debugDraw.SetFlags(DebugDraw.e_shapeBit | DebugDraw.e_jointBit);
+            world.SetDebugDraw(debugDraw);
+            
+        
+        </script>
+    </body>
+</html>

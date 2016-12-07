@@ -1,0 +1,55 @@
+{
+"frames": {
+	"heartOff_000.png": {
+		"frame": {"x":302, "y":278, "w":118, "h":138},
+		"spriteSourceSize": {"x":16,"y":6,"w":150,"h":150},
+		"sourceSize": {"w":150,"h":150}
+	},
+	"heartOff_001.png": {
+		"frame": {"x":302, "y":139, "w":118, "h":138},
+		"spriteSourceSize": {"x":16,"y":6,"w":150,"h":150},
+		"sourceSize": {"w":150,"h":150}
+	},
+	"heartOff_002.png": {
+		"frame": {"x":302, "y":0, "w":118, "h":138},
+		"spriteSourceSize": {"x":16,"y":6,"w":150,"h":150},
+		"sourceSize": {"w":150,"h":150}
+	},
+	"heartOff_003.png": {
+		"frame": {"x":151, "y":151, "w":150, "h":150},
+		"spriteSourceSize": {"x":0,"y":0,"w":150,"h":150},
+		"sourceSize": {"w":150,"h":150}
+	},
+	"heartOff_004.png": {
+		"frame": {"x":151, "y":0, "w":150, "h":150},
+		"spriteSourceSize": {"x":0,"y":0,"w":150,"h":150},
+		"sourceSize": {"w":150,"h":150}
+	},
+	"heartOff_005.png": {
+		"frame": {"x":0, "y":151, "w":150, "h":150},
+		"spriteSourceSize": {"x":0,"y":0,"w":150,"h":150},
+		"sourceSize": {"w":150,"h":150}
+	},
+	"heartOff_006.png": {
+		"frame": {"x":0, "y":151, "w":150, "h":150},
+		"spriteSourceSize": {"x":0,"y":0,"w":150,"h":150},
+		"sourceSize": {"w":150,"h":150}
+	},
+	"heartOff_007.png": {
+		"frame": {"x":0, "y":0, "w":150, "h":150},
+		"spriteSourceSize": {"x":0,"y":0,"w":150,"h":150},
+		"sourceSize": {"w":150,"h":150}
+	},
+	"heartOff_008.png": {
+		"frame": {"x":0, "y":0, "w":150, "h":150},
+		"spriteSourceSize": {"x":0,"y":0,"w":150,"h":150},
+		"sourceSize": {"w":150,"h":150}
+	}
+
+},
+"meta": {
+	"image": "data/heartOffSprite.png",
+	"size": {"w": 421, "h": 417},
+	"scale": "1"
+}
+}

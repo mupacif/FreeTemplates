@@ -1,0 +1,34 @@
+{% extends "FreeDesignBundle::layout.html.twig" %}
+		{% block head %}
+		<style>
+		#aside
+		{
+		border:1px solid black;
+		width:20%;
+		min-width:150px;
+
+		} 
+		#preview
+		{
+		width:70%;
+		min-width:400px;
+
+		}
+		.preview
+		{
+			border:1px solid black;
+			width:100%;
+		}
+
+		</style>
+		{% endblock %}
+	{% block body %}
+<div id="preview">
+         Title:{{template.title}}<br>
+         <img src="{{asset('templates/'~template.files~'/'~template.tumbnail)}}" class="preview"><br>
+        <a href="{{path('free_design_template_download',{'name':template.title|replace({' ':"-"})})}}"> download</a> | <a href="{{path('free_design_preview',{'name':template.title|replace({' ':"-"})})}}">preview</a><br>
+</div>
+<div id="aside">
+AD
+</div>
+     {% endblock %}

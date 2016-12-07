@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{% block title %}{% endblock %}</title>
+  {% block head %}{% endblock %}
+  <style>
+  .container
+  {
+  display:flex;
+  flex-wrap:wrap;
+  margin-left:auto;
+  margin-right:auto;
+  }
+  header,section,footer
+  {
+  	width: 100%;
+  }
+  section
+  {
+  	  display:flex;
+  }
+  header
+  {
+  	
+  	background-color:beige;
+  	border-bottom: 1px solid black;
+  }
+  .box
+  {
+  	width:150px;
+  	border:1px solid black;
+  	text-align: center;
+  }
+
+  .box img
+  {
+  	width: 100%;
+  }
+
+  section
+  {
+  	padding: 10px;
+  }
+  </style>
+</head>
+<body>
+<div class="container">
+<header>
+<span><a href="{{path('free_design_page')}}">Free HTML TEMPLATES</a></span>
+<nav>
+ {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+	<a href="{{ path('free_design_add_category')}}">Add Category</a>
+	<a href="{{ path('free_design_add_template')}}">Add Template</a>
+    {% else %}
+        <a href="{{ path('fos_user_security_login')}}">login</a>
+<a href="{{ path('fos_user_registration_register')}}">register</a>
+       {% endif %}
+</nav>
+</header>
+<section>
+            {% block body %}
+            {% endblock %}
+</section>
+<footer>
+(c) Free Html  2100.
+</footer>
+</div>
+</body>
+</html>

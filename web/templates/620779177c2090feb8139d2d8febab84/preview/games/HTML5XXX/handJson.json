@@ -1,0 +1,20 @@
+{
+"frames": {
+	"hand_000.png": {
+		"frame": {"x":0, "y":0, "w":134, "h":129},
+		"spriteSourceSize": {"x":0,"y":0,"w":150,"h":150},
+		"sourceSize": {"w":150,"h":150}
+	},
+	"hand_001.png": {
+		"frame": {"x":135, "y":0, "w":128, "h":135},
+		"spriteSourceSize": {"x":19,"y":0,"w":150,"h":150},
+		"sourceSize": {"w":150,"h":150}
+	}
+
+},
+"meta": {
+	"image": "data/handSprite.png",
+	"size": {"w": 264, "h": 136},
+	"scale": "1"
+}
+}

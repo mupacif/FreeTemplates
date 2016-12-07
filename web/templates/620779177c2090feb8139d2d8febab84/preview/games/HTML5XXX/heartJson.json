@@ -1,0 +1,25 @@
+{
+"frames": {
+	"heart_000.png": {
+		"frame": {"x":114, "y":0, "w":113, "h":135},
+		"spriteSourceSize": {"x":20,"y":10,"w":150,"h":150},
+		"sourceSize": {"w":150,"h":150}
+	},
+	"heart_001.png": {
+		"frame": {"x":0, "y":135, "w":113, "h":135},
+		"spriteSourceSize": {"x":20,"y":10,"w":150,"h":150},
+		"sourceSize": {"w":150,"h":150}
+	},
+	"heart_002.png": {
+		"frame": {"x":0, "y":0, "w":113, "h":134},
+		"spriteSourceSize": {"x":20,"y":10,"w":150,"h":150},
+		"sourceSize": {"w":150,"h":150}
+	}
+
+},
+"meta": {
+	"image": "data/heartSprite.png",
+	"size": {"w": 228, "h": 271},
+	"scale": "1"
+}
+}
