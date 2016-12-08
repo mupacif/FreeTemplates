@@ -26,7 +26,23 @@ namespace Free\DesignBundle\Controller;
                     {
                         /**
                          * @Route("/")
-                         */         public function downloadTemplateAction($name)
+                         */   
+
+                         public function topMenuAction($name)
+                        {
+                         $repository = $this
+                        ->getDoctrine()
+                        ->getManager()
+                        ->getRepository('FreeDesignBundle:Category');
+
+                         $categories= $repository->findAll();
+                            return $this->render(
+                        'FreeDesignBundle:Default:nav.html.twig',
+                     array('categories' => $categories)
+                         );
+
+                        }
+                               public function downloadTemplateAction($name)
                         {
                              $name = str_replace("-", " ", $name);
                              $repository = $this
