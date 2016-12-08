@@ -1,0 +1,43 @@
+/*!
+ * Start Bootstrap - 2 Col Portfolio (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+body {
+    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+.portfolio-item {
+    margin-bottom: 25px;
+}
+#headpage{
+  background-color: #414141;
+
+}
+#banneru{
+    width:100%;
+    
+color:#e5a372;
+padding-left:75px;
+    height: 200px;
+    margin-top:-19px; 
+    background-color: #c0580b;
+}
+#bodytem{ 
+    margin-top: 20px
+}
+#bann{
+   float: inherit;
+    float: right;
+    margin-right: -15px;
+   margin-top:13px;
+}
+.img-responsive{
+    -webkit-box-shadow: 0px 1px 3px 0px rgba(163,163,163,1);
+-moz-box-shadow: 0px 1px 3px 0px rgba(163,163,163,1);
+box-shadow: 0px 1px 3px 0px rgba(163,163,163,1);
+}
+footer {
+    margin: 50px 0;
+}

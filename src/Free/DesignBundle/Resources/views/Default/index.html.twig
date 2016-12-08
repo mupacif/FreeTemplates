@@ -1,10 +1,31 @@
 	{% extends "FreeDesignBundle::layout.html.twig" %}
 		{% block body %}
- {% for template in templates %}
- <div class="box">
-	      <a href="{{path('free_design_template',{'name':template.title|replace({' ':"-"})})}}"> <img src="{{asset('templates/'~template.files~'/'~template.tumbnail)}}"></a><br>
-	       <a href="{{path('free_design_preview',{'name':template.title|replace({' ':"-"})})}}">preview</a><br>
+		<div id="banneru" class="container">
+    <span><h1>Free Templates<h1><h3>Use  free templates for make life easier</h3></span>
+    
+    <img id="bann"  src="{{asset('images/helper.png')}}"></img>
+</div>
 
-	       </div>
+  <div id="bodytem" class="row">
+ <!-- Projects Row -->
+ {% for template in templates %}
+
+       
+	      
+
+     <div class="col-md-6 portfolio-item">
+                <a href=""{{path('free_design_template',{'name':template.title|replace({' ':"-"})})}}">
+                    <img class="img-responsive" src="{{asset('templates/'~template.files~'/'~template.tumbnail)}}" alt="" width=700 height=400>
+                </a>
+                <h3>
+                    <a href="#">{{template.title}}</a>
+                </h3>
+                <p>{{template.info}}</p>
+                 <p><a href="{{path('free_design_preview',{'name':template.title|replace({' ':"-"})})}}">preview</a></p>
+            </div>
+	      
 	 {% endfor %}
+ </div>
+
+	
 	 	{% endblock %}  
