@@ -1,9 +1,49 @@
 {% extends "FreeDesignBundle::layout.html.twig" %}
-	{% block body %}
-Free Design Bundle<br><br>
-<a href=""> back</a>
+		{% block head %}
+			<style>
 
-<iframe src="{{asset('templates/'~template.files~'/preview/')}}" name="iframe_a"></iframe> 
+			#iframe
+			{
+			width:100%;
+			height:100%;
+			}
+			#top
+			{
+			width:100%;
+			position:absolute;
+			z-index:1;
+			}
+			#bot
+			{
+			position:absolute;
+			top:0px;
+			left:0;
+			z-index:-10;
+			width:100%;
+			height:100vh;
+			}
+			body {
+    overflow-y:hidden;
+}
+body {
+    overflow-x:hidden;
+}
+		footer
+		{
+		display:none;
+		}
+		</style>
+		{% endblock %}
+	{% block body %}
+
+<div id="top">
+Free Design Bundle<br><br>
+<a href="{{path('free_design_page')}}"> back</a>
+</div>
+<div id="bot">
+<iframe src="{{asset('templates/'~template.files~'/preview/index.html')}}" id="iframe" name="iframe_a"></iframe> 
+</div>
+
 
 	{% endblock %}
 
