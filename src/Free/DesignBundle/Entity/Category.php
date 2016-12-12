@@ -38,6 +38,19 @@ class Category
     {
         return $this->id;
     }
+        /**
+     * Set id
+     *
+     * @param string $name
+     *
+     * @return Category
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
 
     /**
      * Set name

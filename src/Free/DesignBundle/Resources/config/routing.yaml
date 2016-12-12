@@ -27,3 +27,12 @@ free_design_template:
 free_design_template_download:  
     path:     /template/download/{name}
     defaults: {_controller: FreeDesignBundle:Default:downloadTemplate }    
+
+# not implemented yet 
+free_design_api_delete_Category:  
+    path:     /api/delete
+    defaults: {_controller: FreeDesignBundle:API:deleteCategory }    
+
+free_design_api_add_Category:  
+    path:     /api/add
+    defaults: {_controller: FreeDesignBundle:API:addCategory }    
