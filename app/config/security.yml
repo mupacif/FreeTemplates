@@ -34,6 +34,7 @@ security:
             remember_me:
                 secret:     %secret% 
     access_control:
+           - { path: ^/_console$, roles: IS_AUTHENTICATED_REMEMBERED }
            #- { path: ^/_console$, roles: ROLE_ADMIN }
        
        
