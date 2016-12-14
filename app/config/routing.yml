@@ -24,7 +24,7 @@ fos_user_change_password:
     
 _console:
     resource: "@CoreSphereConsoleBundle/Resources/config/routing.yml"
-    prefix: /_console
+
 
 
 

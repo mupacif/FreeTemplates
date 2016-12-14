@@ -21,6 +21,9 @@ free_design_template:
     defaults: {_controller: FreeDesignBundle:Default:showTemplate }    
 
 
+free_design_show_category:  
+    path:     /category/{name}
+    defaults: {_controller: FreeDesignBundle:Default:showTemplate }  
 
 
 
