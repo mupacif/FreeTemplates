@@ -34,7 +34,7 @@ security:
             remember_me:
                 secret:     %secret% 
     access_control:
-           - { path: ^/_console$, roles: ROLE_ADMIN }
+           #- { path: ^/_console$, roles: ROLE_ADMIN }
        
        
             # activate different ways to authenticate
