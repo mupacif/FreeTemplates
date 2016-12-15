@@ -30,7 +30,7 @@
     function deleteTemplate(id)
     {
   
-     
+             if (confirm('Are you sure you want to delete?')) {
     $.ajax({
        url : '{{path('free_design_api_delete_Template')}}',
        type : 'POST',
@@ -39,16 +39,18 @@
        complete : function(result, statut){
             if(result.responseJSON.data)
             {
-            if (confirm('Are you sure you want to delete?')) {
-    // Save it!
+    
+
 
                   $('#'+id).remove();
-                  }
+                
+
                   }
 
        }
     });
    
+    }
     }
     </script>
 	{% endif %}
