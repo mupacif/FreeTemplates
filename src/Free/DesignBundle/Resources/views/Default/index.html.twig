@@ -39,7 +39,11 @@
        complete : function(result, statut){
             if(result.responseJSON.data)
             {
+            if (confirm('Are you sure you want to delete?')) {
+    // Save it!
+
                   $('#'+id).remove();
+                  }
                   }
 
        }
