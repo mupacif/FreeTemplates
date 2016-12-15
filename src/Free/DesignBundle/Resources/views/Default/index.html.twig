@@ -11,7 +11,8 @@
  {% for template in templates %}
 
 
-            <div class="col-md-6 portfolio-item">
+            <div class="col-md-6 portfolio-item" id="{{template.id}}">
+            <span onclick="deleteTemplate({{template.id}})" class="glyphicon glyphicon-remove removable" ></span>
                 <a href="{{path('free_design_template',{'name':template.title|replace({' ':"-"})})}}">
                     <img class="img-responsive" src="{{asset('templates/'~template.files~'/'~template.tumbnail)}}" alt="" width="700" height="400">
                 </a>
@@ -22,6 +23,28 @@
 	      
 	 {% endfor %}
  </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
 
+    function deleteTemplate(id)
+    {
+  
+     
+    $.ajax({
+       url : '{{path('free_design_api_delete_Template')}}',
+       type : 'POST',
+       data : 'id='+id,
+       dataType : 'json',
+       complete : function(result, statut){
+            if(result.responseJSON.data)
+            {
+                  $('#'+id).remove();
+                  }
+
+       }
+    });
+   
+    }
+    </script>
 	
 	 	{% endblock %}  

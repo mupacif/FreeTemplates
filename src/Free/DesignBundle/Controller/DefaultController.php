@@ -116,7 +116,7 @@ namespace Free\DesignBundle\Controller;
                               }
                               else
                               {
-                                echo "jaja";
+    
                                  $listTemplates = $repository->getTemplatesWithCategories(array($category));
                               }
 

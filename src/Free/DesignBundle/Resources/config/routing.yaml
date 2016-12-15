@@ -40,3 +40,8 @@ free_design_api_delete_Category:
 free_design_api_add_Category:  
     path:     /api/add
     defaults: {_controller: FreeDesignBundle:API:addCategory }    
+
+
+free_design_api_delete_Template:  
+    path:     /api/deleteTemplate
+    defaults: {_controller: FreeDesignBundle:API:deleteTemplate }    
