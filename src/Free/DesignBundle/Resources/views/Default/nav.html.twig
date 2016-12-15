@@ -28,9 +28,6 @@
     </ul>
 
                     </li>
-                    <li>
-                        <a href="{{path('free_design_page')}}">Contact</a>
-                    </li>
                      {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                        {% if is_granted("ROLE_ADMIN") %}
   <li><a href="{{ path('free_design_add_category')}}">Add Category</a></li>
