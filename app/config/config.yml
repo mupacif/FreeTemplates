@@ -11,7 +11,7 @@ parameters:
     locale: en
     templates_directory: '%kernel.root_dir%/../web/templates'
 twig:
-    cache: true
+    cache: false
 framework:
     #esi:             ~
     #translator:      { fallbacks: ["%locale%"] }
