@@ -23,7 +23,7 @@
     <span class="caret"></span></span>
     <ul class="dropdown-menu">
     {% for cat in categories %}
-      <li><a href="#">{{cat.name}}</a></li>
+      <li><a href="{{path('free_design_show_category',{category:cat.name})}}">{{cat.name}}</a></li>
     {% endfor%}
     </ul>
 

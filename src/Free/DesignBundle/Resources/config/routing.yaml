@@ -20,9 +20,10 @@ free_design_template:
     path:     /template/{name}
     defaults: {_controller: FreeDesignBundle:Default:showTemplate }    
 
+#show itemps by category 
 
 free_design_show_category:  
-    path:     /category/{name}
+    path:     /category/{category}
     defaults: {_controller: FreeDesignBundle:Default:index }
 
 

@@ -103,14 +103,23 @@ namespace Free\DesignBundle\Controller;
                              return $this->redirectToRoute('free_design_page');
                         }
 
-                          public function indexAction()
+                          public function indexAction($category)
                         {
                              $repository = $this
-                        ->getDoctrine()
-                        ->getManager()
-                        ->getRepository('FreeDesignBundle:Template')        ;
+                              ->getDoctrine()
+                              ->getManager()
+                              ->getRepository('FreeDesignBundle:Template');
 
-                         $listTemplates = $repository->findAll();
+                              if(empty($category))
+                              {
+                                 $listTemplates = $repository->findAll();
+                              }
+                              else
+                              {
+                                echo "jaja";
+                                 $listTemplates = $repository->getTemplatesWithCategories(array($category));
+                              }
+
 
                             return $this->render('FreeDesignBundle:Default:index.html.twig',['templates' => $listTemplates]);
                         }

@@ -10,17 +10,13 @@
  <!-- Projects Row -->
  {% for template in templates %}
 
-       
-	      
 
-     <div class="col-md-6 portfolio-item">
+            <div class="col-md-6 portfolio-item">
                 <a href="{{path('free_design_template',{'name':template.title|replace({' ':"-"})})}}">
                     <img class="img-responsive" src="{{asset('templates/'~template.files~'/'~template.tumbnail)}}" alt="" width="700" height="400">
                 </a>
-                <h3>
-                    <a href="{{path('free_design_template',{'name':template.title|replace({' ':"-"})})}}">{{template.title}}</a>
-                </h3>
-                <p>{{template.info}}</p>
+        
+
                  <p><a href="{{path('free_design_preview',{'name':template.title|replace({' ':"-"})})}}">preview</a></p>
             </div>
 	      
