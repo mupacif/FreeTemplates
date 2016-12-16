@@ -28,7 +28,7 @@ namespace Free\DesignBundle\Controller;
                          * @Route("/")
                          */   
 
-                         public function topMenuAction($name)
+                         public function topMenuAction($name=null)
                         {
                          $repository = $this
                         ->getDoctrine()
@@ -103,7 +103,7 @@ namespace Free\DesignBundle\Controller;
                              return $this->redirectToRoute('free_design_page');
                         }
 
-                          public function indexAction($category)
+                          public function indexAction($category=null)
                         {
                              $repository = $this
                               ->getDoctrine()

@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Free\DesignBundle\FreeDesignBundle(),
             new CoreSphere\ConsoleBundle\CoreSphereConsoleBundle(),
             new Free\UserBundle\FreeUserBundle(),
+            new Liip\ImagineBundle\LiipImagineBundle(),
 
         ];
 
