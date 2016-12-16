@@ -37,7 +37,7 @@ namespace Free\DesignBundle\Controller;
 
                          $categories= $repository->findAll();
                             return $this->render(
-                        'FreeDesignBundle:Default:nav.html.twig',
+                        'Free/DesignBundle/Default/nav.html.twig',
                      array('categories' => $categories)
                          );
 
@@ -81,7 +81,7 @@ namespace Free\DesignBundle\Controller;
                          $template= $repository->findOneByTitle($name);
                        //  var_dump($template);
                        if(count($template))
-                           return $this->render('FreeDesignBundle:Default:show.html.twig',['template' =>  $template]);
+                           return $this->render('Free/DesignBundle/Default/show.html.twig',['template' =>  $template]);
                       else
                              return $this->redirectToRoute('free_design_page');
                         }
@@ -98,7 +98,7 @@ namespace Free\DesignBundle\Controller;
                          $template= $repository->findOneByTitle($name);
                        //  var_dump($template);
                        if(count($template))
-                           return $this->render('FreeDesignBundle:Default:preview.html.twig',['template' =>  $template]);
+                           return $this->render('Free/DesignBundle/Default/preview.html.twig',['template' =>  $template]);
                       else
                              return $this->redirectToRoute('free_design_page');
                         }
@@ -121,7 +121,7 @@ namespace Free\DesignBundle\Controller;
                               }
 
 
-                            return $this->render('FreeDesignBundle:Default:index.html.twig',['templates' => $listTemplates]);
+                            return $this->render('Free/DesignBundle/Default/index.html.twig',['templates' => $listTemplates]);
                         }
 
                             public function addTemplateAction(Request $request)
@@ -202,7 +202,7 @@ namespace Free\DesignBundle\Controller;
                         }
                         // À partir du formBuilder, on génère le formulaire
                  
-                            return $this->render('FreeDesignBundle:Default:add.html.twig',["title"=>"Template","form" => $form->createView()]);
+                            return $this->render('Free/DesignBundle/Default/add.html.twig',["title"=>"Template","form" => $form->createView()]);
                         }
 
                     
@@ -239,7 +239,7 @@ namespace Free\DesignBundle\Controller;
                         }
                         // À partir du formBuilder, on génère le formulaire
                  
-                            return $this->render('FreeDesignBundle:Default:add.html.twig',["title"=>"category","form" => $form->createView()]);
+                            return $this->render('Free/DesignBundle/Default/add.html.twig',["title"=>"category","form" => $form->createView()]);
                         }
 
 

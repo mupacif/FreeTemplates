@@ -14,7 +14,7 @@ namespace Free\DesignBundle\Controller;
 
                              $categories= $repository->findAll();
                                 return $this->render(
-                            'FreeDesignBundle:widgets:showCategories.html.twig',
+                            'Free/DesignBundle/widgets/showCategories.html.twig',
                              array('categories' => $categories)
                              );
 
