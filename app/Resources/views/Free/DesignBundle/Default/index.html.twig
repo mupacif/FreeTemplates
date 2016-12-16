@@ -1,0 +1,57 @@
+	{% extends 'Free/DesignBundle/layout.html.twig' %}
+		{% block body %}
+		<div id="banneru" class="container">
+    <span><h1>Templates4web<h1><h3>Use  free templates to make life easier</h3></span>
+    
+    <img id="bann"  src="{{asset('images/helper.png')}}"></img>
+</div>
+
+  <div id="bodytem" class="row">
+ <!-- Projects Row -->
+ {% for template in templates %}
+
+
+            <div class="col-md-6 portfolio-item" id="{{template.id}}">
+           {% if is_granted("ROLE_ADMIN") %}  <span onclick="deleteTemplate({{template.id}})" class="glyphicon glyphicon-remove removable" ></span> {% endif %}
+                <a href="{{path('free_design_template',{'name':template.title|replace({' ':"-"})})}}">
+                    <img class="img-responsive" src="{{asset('templates/'~template.files~'/'~template.tumbnail)| imagine_filter('xs_thumb') }}" alt="" width="700" height="400">
+                </a>
+        
+
+                 <p><a href="{{path('free_design_preview',{'name':template.title|replace({' ':"-"})})}}">preview</a></p>
+            </div>
+	      
+	 {% endfor %}
+ </div>
+  {% if is_granted("ROLE_ADMIN") %} 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+
+    function deleteTemplate(id)
+    {
+  
+             if (confirm('Are you sure you want to delete?')) {
+    $.ajax({
+       url : '{{path('free_design_api_delete_Template')}}',
+       type : 'POST',
+       data : 'id='+id,
+       dataType : 'json',
+       complete : function(result, statut){
+            if(result.responseJSON.data)
+            {
+    
+
+
+                  $('#'+id).remove();
+                
+
+                  }
+
+       }
+    });
+   
+    }
+    }
+    </script>
+	{% endif %}
+	 	{% endblock %}  
