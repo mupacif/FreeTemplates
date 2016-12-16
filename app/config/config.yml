@@ -5,14 +5,11 @@ imports:
     - { resource: "@FreeDesignBundle/Resources/config/services.yml" }
     - { resource: "@FreeUserBundle/Resources/config/services.yml" }
 liip_imagine:
-    resolvers:
-        default:
-            web_path: ~
     filter_sets:
         xs_thumb:
-            quality: 75
+            quality: 90
             filters:
-                thumbnail: { size: [50, 75] }
+                thumbnail: { size: [500, 400], mode: inset }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
