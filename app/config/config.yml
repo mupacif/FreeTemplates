@@ -12,15 +12,9 @@ liip_imagine:
                 thumbnail: { size: [500, 400],    start: [ 040, 160 ], mode: outbound }
         my_crop:
             filters:
-                thumbnail: { size: [500, 400], mode: outbound }
+                thumbnail: { size: [100, 100], mode: outbound }
                 # use and setup the "crop" filter
-                crop:
 
-                    # set the size of the cropping area
-                    size: [500, 400]
-
-                    # set the starting coordinates of the crop
-                    start: [ 040, 160 ]
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
