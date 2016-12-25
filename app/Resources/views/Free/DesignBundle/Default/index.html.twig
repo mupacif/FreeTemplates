@@ -14,7 +14,7 @@
             <div class="col-md-6 portfolio-item" id="{{template.id}}">
            {% if is_granted("ROLE_ADMIN") %}  <span onclick="deleteTemplate({{template.id}})" class="glyphicon glyphicon-remove removable" ></span> {% endif %}
                 <a href="{{path('free_design_template',{'name':template.title|replace({' ':"-"})})}}">
-                    <img class="img-responsive" src="{{asset('templates/'~template.files~'/'~template.tumbnail)| imagine_filter('crop') }}" alt="" width="700" height="400">
+                    <img class="img-responsive" src="{{asset('templates/'~template.files~'/'~template.tumbnail)| imagine_filter('thumb') }}" alt="" width="700" height="400">
                 </a>
         
 
