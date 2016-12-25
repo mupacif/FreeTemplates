@@ -12,12 +12,12 @@ liip_imagine:
                 thumbnail: { size: [500, 400],    start: [ 040, 160 ], mode: outbound }
         my_crop:
             filters:
-
+                thumbnail: { size: [500, 400], mode: outbound }
                 # use and setup the "crop" filter
                 crop:
 
                     # set the size of the cropping area
-                    size: [ 300, 600 ]
+                    size: [500, 400]
 
                     # set the starting coordinates of the crop
                     start: [ 040, 160 ]
