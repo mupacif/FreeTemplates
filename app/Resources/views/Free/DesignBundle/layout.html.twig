@@ -53,10 +53,14 @@
 </head>
 <body>
     <!-- Navigation -->
+            {% block nav %}
+          
  {{ render(controller(
         'FreeDesignBundle:Default:topMenu'
     )) }}
     
+
+      {% endblock %}
         <div class="container">
 
 
