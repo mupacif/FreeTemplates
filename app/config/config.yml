@@ -9,14 +9,14 @@ liip_imagine:
         thumb:
             quality: 100
             filters:
-                thumbnail: { size: [500, 400] , mode: outbound}
+                thumbnail: { size: [500, 400] , mode: inset}
         crop:
             filters:
               
                 crop:
 
                     # set the size of the cropping area
-                    size: [500, 400]
+                    size: [630, 400]
 
                     # set the starting coordinates of the crop
                     start: [ 000, 000 ]
