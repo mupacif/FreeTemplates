@@ -6,13 +6,12 @@ imports:
     - { resource: "@FreeUserBundle/Resources/config/services.yml" }
 liip_imagine:
     filter_sets:
-        xs_thumb:
+        thumb:
             quality: 100
             filters:
-                thumbnail: { size: [500, 400],    start: [ 040, 160 ], mode: outbound }
-        my_crop:
-            filters:
-                thumbnail: { size: [100, 100], mode: outbound, allow_upscale: true }
+                thumbnail: { size: [500, 400], mode: outbound }
+
+
                 # use and setup the "crop" filter
 
 
