@@ -12,7 +12,7 @@ liip_imagine:
                 thumbnail: { size: [500, 400],    start: [ 040, 160 ], mode: outbound }
         my_crop:
             filters:
-                thumbnail: { size: [100, 100], mode: outbound }
+                thumbnail: { size: [100, 100], mode: outbound, allow_upscale: true }
                 # use and setup the "crop" filter
 
 
