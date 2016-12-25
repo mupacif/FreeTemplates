@@ -9,7 +9,7 @@ liip_imagine:
         thumb:
             quality: 100
             filters:
-                thumbnail: { size: [500, 400], mode: mode: inset }
+                thumbnail: { size: [500, 400], mode: inset }
 
 
                 # use and setup the "crop" filter
