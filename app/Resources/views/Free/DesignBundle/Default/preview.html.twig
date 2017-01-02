@@ -1,4 +1,4 @@
-{% extends 'Free/DesignBundle/layout.html.twig' %}
+
 		{% block head %}
 			<style>
 
@@ -7,27 +7,20 @@
 			width:100%;
 			height:100%;
 			}
-			#top
-			{
-			width:100%;
-			position:absolute;
-			z-index:1;
-			}
+
 			#bot
 			{
 			position:absolute;
 			top:0px;
 			left:0;
-			z-index:-10;
+
 			width:100%;
 			height:100vh;
 			}
 			body {
     overflow-y:hidden;
 }
-body {
-    overflow-x:hidden;
-}
+
 		footer
 		{
 		display:none;
@@ -36,10 +29,6 @@ body {
 		{% endblock %}
 	{% block body %}
 
-<div id="top">
-Free Design Bundle<br><br>
-<a href="javascript:history.go(-1)"> back</a>
-</div>
 <div id="bot">
 <iframe src="{{asset('templates/'~template.files~'/preview/index.html')}}" id="iframe" name="iframe_a"></iframe> 
 </div>
