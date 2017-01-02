@@ -1,0 +1,84 @@
+	{% extends 'Free/DesignBundle/layout.html.twig' %}
+		{% block body %}
+    <div class="container intro" id="home">
+
+
+        <div class="starter-template">
+            <h1 class="margin">Templates4web </h1>
+           
+            <div class="header-content">
+
+                <h2>Stock of free html templates.</h2>
+
+
+                   </div>
+        </div>
+    </div>
+
+  <div class="container templates" id="templates">
+         <div class="starter-template">
+ <!-- Projects Row -->
+             <div class="col-lg-12 text-center">
+                <h2>Templates</h2>
+                <hr class="star-light">
+            </div>
+ {% for template in templates %}
+
+
+            <div class="col-md-6" id="{{template.id}}">
+                  <a href="{{path('free_design_template',{'name':template.title|replace({' ':"-"})})}}" class="portfolio-box" data-toggle="modal">
+                      
+           {% if is_granted("ROLE_ADMIN") %}  <span onclick="deleteTemplate({{template.id}})" class="glyphicon glyphicon-remove removable" ></span> {% endif %}
+             
+                    <img class="img-responsive" src="{{asset('templates/'~template.files~'/'~template.tumbnail)| imagine_filter('xs_thumb') }}" alt="" width="700" height="400">
+           
+                  <div class="portfolio-box-caption">
+                        <div class="portfolio-box-caption-content">
+                            <div class="project-name">
+                               {{{template.title}}
+                            </div>
+                            <div class="project-description">
+                     
+                                <br>
+                                  <button href="{{path('free_design_preview',{'name':template.title|replace({' ':"-"})})}}" type="button" class="btn btn-default">Preview</button>
+                            </div>
+                        </div>
+                    </div>
+
+                   </a>
+            </div>
+	      
+	 {% endfor %}
+ </div>
+  {% if is_granted("ROLE_ADMIN") %} 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+
+    function deleteTemplate(id)
+    {
+  
+             if (confirm('Are you sure you want to delete?')) {
+    $.ajax({
+       url : '{{path('free_design_api_delete_Template')}}',
+       type : 'POST',
+       data : 'id='+id,
+       dataType : 'json',
+       complete : function(result, statut){
+            if(result.responseJSON.data)
+            {
+    
+
+
+                  $('#'+id).remove();
+                
+
+                  }
+
+       }
+    });
+   
+    }
+    }
+    </script>
+	{% endif %}
+	 	{% endblock %}  
