@@ -1,24 +1,51 @@
 	{% extends 'Free/DesignBundle/layout.html.twig' %}
 		{% block body %}
-		<div id="banneru" class="container">
-    <span><h1>Templates4web<h1><h3>Use  free templates to make life easier</h3></span>
-    
-    <img id="bann"  src="{{asset('images/helper.png')}}"></img>
-</div>
+    <div class="container intro" id="home">
 
-  <div id="bodytem" class="row">
+
+        <div class="starter-template">
+            <h1 class="margin">Templates4web </h1>
+           
+            <div class="header-content">
+
+                <h2>Stock of free html templates.</h2>
+
+
+                   </div>
+        </div>
+    </div>
+
+  <div class="container templates" id="templates">
+         <div class="starter-template">
  <!-- Projects Row -->
+             <div class="col-lg-12 text-center">
+                <h2>Templates</h2>
+                <hr class="star-light">
+            </div>
  {% for template in templates %}
 
 
-            <div class="col-md-6 portfolio-item" id="{{template.id}}">
+            <div class="col-md-6" id="{{template.id}}">
+                  <a href="{{path('free_design_template',{'name':template.title|replace({' ':"-"})})}}" class="portfolio-box" data-toggle="modal">
+                      
            {% if is_granted("ROLE_ADMIN") %}  <span onclick="deleteTemplate({{template.id}})" class="glyphicon glyphicon-remove removable" ></span> {% endif %}
-                <a href="{{path('free_design_template',{'name':template.title|replace({' ':"-"})})}}">
-                    <img class="img-responsive" src="{{asset('templates/'~template.files~'/'~template.tumbnail)| imagine_filter('crop')}}" alt="" width="700" height="400">
-                </a>
-        
+             
+                    <img class="img-responsive" src="{{asset('templates/'~template.files~'/'~template.tumbnail)| imagine_filter('xs_thumb') }}" alt="" width="700" height="400">
+           
+                  <div class="portfolio-box-caption">
+                        <div class="portfolio-box-caption-content">
+                            <div class="project-name">
+                               {{{template.title}}
+                            </div>
+                            <div class="project-description">
+                     
+                                <br>
+                                  <button href="{{path('free_design_preview',{'name':template.title|replace({' ':"-"})})}}" type="button" class="btn btn-default">Preview</button>
+                            </div>
+                        </div>
+                    </div>
 
-                 <p><a href="{{path('free_design_preview',{'name':template.title|replace({' ':"-"})})}}" target="_blank">preview</a></p>
+                   </a>
             </div>
 	      
 	 {% endfor %}
