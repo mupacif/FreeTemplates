@@ -30,7 +30,7 @@
                       
            {% if is_granted("ROLE_ADMIN") %}  <span onclick="deleteTemplate({{template.id}})" class="glyphicon glyphicon-remove removable" ></span> {% endif %}
              
-                    <img class="img-responsive" src="{{asset('templates/'~template.files~'/'~template.tumbnail)| imagine_filter('xs_thumb') }}" alt="" width="700" height="400">
+                    <img class="img-responsive" src="{{asset('templates/'~template.files~'/'~template.tumbnail)| imagine_filter('crop') }}" alt="" width="700" height="400">
            
                   <div class="portfolio-box-caption">
                         <div class="portfolio-box-caption-content">
