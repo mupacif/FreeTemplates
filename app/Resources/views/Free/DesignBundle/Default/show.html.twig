@@ -37,7 +37,7 @@
                   <div class="details">
                   	 <p> Description: {{template.info}}.</p>
         
-        <button href="{{path('free_design_template_download',{'name':template.title|replace({' ':"-"})})}}" type="button" class="btn btn-default"> download</button> <button href="{{path('free_design_preview',{'name':template.title|replace({' ':"-"})})}}" target="_blank" type="button" class="btn btn-default">preview</button><br>
+        <a href="{{path('free_design_template_download',{'name':template.title|replace({' ':"-"})})}}" type="button" class="btn btn-default"> download</a> <a href="{{path('free_design_preview',{'name':template.title|replace({' ':"-"})})}}" target="_blank" type="button" class="btn btn-default">preview</a><br>
 </div>
 </div>
 </div>
