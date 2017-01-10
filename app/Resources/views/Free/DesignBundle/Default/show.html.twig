@@ -23,12 +23,26 @@
 		</style>
 		{% endblock %}
 	{% block body %}
-<div id="preview">
+    <div class="container templates" id="templates">
+
+<div class="col-lg-12">
+     
+         <div class="col-sm-12 col-md-6 col-lg-6">
          <h3>{{template.title}}</h3><br>
-         <img src="{{asset('templates/'~template.files~'/'~template.tumbnail)}}" class="preview"><br>
-                      <p> Description: {{template.info}}</p>
-        <a href="{{path('free_design_template_download',{'name':template.title|replace({' ':"-"})})}}"> download</a> | <a href="{{path('free_design_preview',{'name':template.title|replace({' ':"-"})})}}" target="_blank">preview</a><br>
+          <img src="{{asset('templates/'~template.files~'/'~template.tumbnail)}}" class="img-responsive"><br>
+        </div>
+    
+
+              <div class="col-sm-12 col-md-6 col-lg-6">
+                  <div class="details">
+                  	 <p> Description: {{template.info}}.</p>
+        
+        <button href="{{path('free_design_template_download',{'name':template.title|replace({' ':"-"})})}}" type="button" class="btn btn-default"> download</button> | <button href="{{path('free_design_preview',{'name':template.title|replace({' ':"-"})})}}" target="_blank" type="button" class="btn btn-default">preview</button><br>
 </div>
+</div>
+</div>
+    </div>
+ 
 <!-- <div id="aside">
 AD
 </div>-->
